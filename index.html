@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trilha Competições — Aprenda com Projetos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Decorative pixels -->
+  <div class="pixel-deco"></div>
+  <div class="pixel-deco"></div>
+  <div class="pixel-deco"></div>
+  <div class="pixel-deco"></div>
+
+  <header>
+    <a href="#" class="logo">
+      <div class="logo-icon pixel-border">
+        <span>⚔️</span>
+      </div>
+      <div class="logo-text">
+        Play Dev
+        <small>aumente suas habilidades</small>
+      </div>
+    </a>
+    <a href="https://github.com/GUIPETAV/ideiasprojetos/blob/main/projetos/tier-1/01-cronometro.md" target="_blank" class="nav-link">
+      <span>📦</span> GitHub
+    </a>
+    <div id="user-info" class="user-info hidden">
+      <span>👤</span>
+      <span id="user-name"></span>
+      <button type="button" id="logout-btn">sair</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1 class="hero-title">
+      Aprenda a codar<br>
+      construindo<br>
+      <span class="highlight">Projetos Reais</span>
+    </h1>
+    <p class="hero-desc">
+      3 setups de ambiente + 12 quests de código. Configure seu ambiente, depois construa projetos reais.
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-label">Setup</span>
+        <span class="stat-value">3 AMBIENTES</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Quests</span>
+        <span class="stat-value">12</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Tempo</span>
+        <span class="stat-value">12 SEMANAS</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Stack</span>
+        <span class="stat-value">HTML+CSS+JS</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="xp-section">
+    <div class="xp-bar-container pixel-border">
+      <div class="xp-header">
+        <span class="xp-label"><span>⭐</span> XP Progress</span>
+        <span class="xp-value" id="xp-text">0/12 QUESTS</span>
+      </div>
+      <div class="xp-track pixel-border">
+        <div class="xp-fill" id="xp-fill" style="width: 0%"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- World Map -->
+  <section class="world-section" id="world-section">
+    <div class="world-header">
+      <h2 class="section-title">MAPA</h2>
+      <div class="view-toggle">
+        <button type="button" class="view-btn active pixel-border" id="btn-map">🗺️ MAPA</button>
+        <button type="button" class="view-btn pixel-border" id="btn-list">📋 LISTA</button>
+      </div>
+    </div>
+    <div class="world-wrap pixel-border">
+      <canvas id="world-canvas" height="200"></canvas>
+      <div class="world-hint">
+        <span>← → mover</span>
+        <span class="hint-sep">·</span>
+        <span>[E] entrar na missão</span>
+        <span class="hint-sep">·</span>
+        <span>clique na bandeira para ir</span>
+      </div>
+    </div>
+  </section>
+
+  <main class="quests-section hidden" id="quests-section">
+    <h2 class="section-title">QUESTS</h2>
+    <p class="section-subtitle">Clique em uma quest pra começar</p>
+    <div class="quests-grid" id="quests-grid"></div>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal pixel-border">
+      <div class="modal-video" id="modal-video"></div>
+      <div class="modal-body">
+        <div class="modal-header">
+          <h3 class="modal-title" id="modal-title"></h3>
+          <button class="modal-close pixel-border" id="modal-close">✕</button>
+        </div>
+        <p class="modal-desc" id="modal-desc"></p>
+
+        <div class="modal-section">
+          <h4 class="modal-section-title">📋 CHECKLIST</h4>
+          <ul class="checklist" id="modal-checklist"></ul>
+        </div>
+
+        <div class="modal-actions">
+          <a href="#" class="btn btn-primary pixel-border" id="modal-github" target="_blank">
+            <span>📦</span> VER NO GITHUB
+          </a>
+          <button class="btn btn-success pixel-border" id="modal-complete">
+            <span>✓</span> <span class="btn-text">COMPLETAR</span>
+          </button>
+        </div>
+
+        <div class="comments-section">
+          <h4 class="modal-section-title">💬 DÚVIDAS</h4>
+          <div class="comment-form">
+            <div class="comment-form-top">
+              <textarea class="comment-input pixel-border" id="comment-input" placeholder="Escreva sua dúvida ou descreva o erro..." rows="2"></textarea>
+              <button type="button" class="btn-send pixel-border" id="comment-send">Enviar</button>
+            </div>
+            <div class="comment-form-bottom">
+              <label class="upload-label pixel-border" for="comment-image">
+                <span>📎</span> Anexar print
+              </label>
+              <input type="file" id="comment-image" accept="image/*" class="sr-only">
+              <span id="image-name" class="image-name"></span>
+            </div>
+          </div>
+          <div class="comments-list" id="comments-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p class="footer-text">
+      Baseado em <a href="https://github.com/florinpop17/app-ideas" target="_blank">app-ideas</a> · 
+      Feito com ❤️ e pixels
+    </p>
+  </footer>
+
+  <!-- Login Screen -->
+  <div id="login-screen" class="login-screen open">
+    <div class="login-box pixel-border">
+      <div class="login-logo">
+        <div class="logo-icon pixel-border"><span>⚔️</span></div>
+        <div class="logo-text">Play Dev<small>faça login para continuar</small></div>
+      </div>
+
+      <p id="login-error" class="login-error hidden"></p>
+
+      <form id="form-login" class="auth-form">
+        <h3 class="auth-title">▶ ENTRAR</h3>
+        <input type="text" id="login-username" placeholder="usuário" class="auth-input pixel-border" autocomplete="username" required>
+        <input type="password" id="login-password" placeholder="senha" class="auth-input pixel-border" autocomplete="current-password" required>
+        <button type="submit" class="btn btn-primary pixel-border full-btn">ENTRAR</button>
+        <button type="button" id="show-register" class="auth-toggle">Não tem conta? Cadastrar →</button>
+      </form>
+
+      <form id="form-register" class="auth-form hidden">
+        <h3 class="auth-title">+ NOVO PLAYER</h3>
+        <input type="text" id="reg-username" placeholder="usuário" class="auth-input pixel-border" required>
+        <input type="email" id="reg-email" placeholder="e-mail" class="auth-input pixel-border" required>
+        <input type="password" id="reg-password" placeholder="senha" class="auth-input pixel-border" required>
+        <button type="submit" class="btn btn-success pixel-border full-btn">CRIAR CONTA</button>
+        <button type="button" id="show-login" class="auth-toggle">Já tem conta? Entrar →</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
